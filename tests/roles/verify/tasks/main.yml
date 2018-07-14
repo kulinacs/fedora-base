@@ -1,0 +1,3 @@
+---
+- name: Verify we can run tasks
+  command: /bin/true

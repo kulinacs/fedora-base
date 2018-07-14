@@ -1,0 +1,15 @@
+---
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker/compose:1.21.2
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Fedora container
+          command: docker-compose build
+      - run:
+          name: Test Fedora container
+          command: docker-compose run ansible

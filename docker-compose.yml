@@ -1,0 +1,18 @@
+---
+version: '3'
+services:
+  fedora:
+    build:
+      context: .
+    image: ansible-fedora:28
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /run
+      - /tmp
+  ansible:
+    build:
+      context: ./tests
+    depends_on:
+      - fedora
